@@ -1,0 +1,32 @@
+# === PENGATURAN DASAR ===
+set datafile separator ","
+set grid
+set xdata time
+set timefmt '"%Y-%m-%d %H:%M:%S"'     # Tambahkan tanda kutip untuk format seperti "2025-09-30 17:27:31"
+set format x "%H:%M\n%m-%d"
+set xlabel "Waktu (Timestamp)" font "Arial,14"
+set ylabel "Temperature (°C)" font "Arial,14" 
+set title "Temperature Refrigerator Penyimpanan Obat" font "Arial,16" 
+set key outside top center horizontal box
+
+# === BATAS & DETAIL ===
+set yrange [0:40]
+set mxtics 4
+set mytics 4
+set grid xtics ytics mxtics mytics lw 1 lc rgb "#cccccc"
+
+# === GAYA GARIS ===
+set style line 1 lc rgb "#1f77b4" lw 2 pt 7 ps 0.6 title "Temperature vs Timestamp"
+set style line 2 lc rgb "#ff7f0e" lw 2 dashtype 2 pt 9 ps 0.6 title "Temperature vs Convert_Timestamp"
+
+# === OUTPUT FILE ===
+set term pngcairo size 1920,1080 enhanced font "Arial,12"
+set output "grafik_dual_temperature.png"
+
+# === PLOTTING ===
+plot "data_temperature.csv" using 1:2 with linespoints smooth bezier ls 1, \
+     "" using 4:2 with linespoints smooth bezier ls 2
+
+# === TAMBAHAN OPSIONAL: TAMPILKAN KE LAYAR ===
+set term qt
+replot
