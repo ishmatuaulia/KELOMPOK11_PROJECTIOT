@@ -1,3 +1,5 @@
-cargo:rustc-check-cfg=cfg(has_total_cmp)
-cargo:rustc-cfg=has_total_cmp
 cargo:rerun-if-changed=build.rs
+cargo:rustc-check-cfg=cfg(exhaustive)
+cargo:rustc-check-cfg=cfg(prettyplease_debug)
+cargo:rustc-check-cfg=cfg(prettyplease_debug_indent)
+cargo:VERSION=0.2.37
