@@ -1,4 +1,4 @@
-# 🛰 IoT DS18B20 (Rust + ESP-IDF, ESP32-S3)
+# 🛰 IoT DS18B20 (Rust, ESP32-S3)
 
 Proyek ini terdiri dari dua modul utama yang ditulis dalam *Rust* dan dijalankan di *ESP32-S3*:
 
