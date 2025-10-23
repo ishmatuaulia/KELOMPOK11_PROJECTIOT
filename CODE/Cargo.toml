@@ -1,0 +1,40 @@
+[package]
+name = "project-tubes"
+version = "0.1.0"
+authors = ["riska-laena"]
+edition = "2021"
+resolver = "2"
+rust-version = "1.77"
+
+[[bin]]
+name = "project-tubes"
+harness = false
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true
+opt-level = "z"
+
+[features]
+default = []
+experimental = ["esp-idf-svc/experimental"]
+
+[dependencies]
+log = "0.4"
+esp-idf-svc = { version = "0.51", features = ["std"] }
+esp-idf-sys = { version = "0.36", features = ["binstart", "std"] }
+esp-idf-hal = "0.45"
+anyhow = "1.0"
+heapless = "0.8"
+serde_json = { version = "1.0", default-features = false, features = ["alloc"] }
+onewire = "0.4.0"
+embedded-hal = "1.0"
+serde = { version = "1.0.228", features = ["derive"] }
+
+[build-dependencies]
+embuild = "0.33"
+
+[patch.crates-io]
+embedded-hal = { git = "https://github.com/rust-embedded/embedded-hal", branch = "master" }
